@@ -1,6 +1,5 @@
 algoritmo pesquisaEntrePilotos;
 // Síntese
-// Aluno: Gustavo Ribeiro dos Santos // Matricula UC18100150
 //  Objetivo:  Pesquisa entre pilotos para saber qual equipe da Formula 1 é favorita;
 //  Entrada : quantidade de pessoas entrevistadas, qual sua equipe favorita;
 //  Saída   : quantidade de indicações cada equipe recebeu, informar se houver uma opinião diferente das equipes indicadas, qual equipe foi mais privilegiada;
