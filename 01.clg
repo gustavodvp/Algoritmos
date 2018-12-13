@@ -1,9 +1,5 @@
 algoritmo horasMinutosSegundos;
 
-// Aluno: Gustavo Ribeiro dos Santos
-// Matricula: UC18100150
-
-
 // Síntese
 //  Objetivo:  calcular quantos minutos e segundos tem as horas
 //  Entrada : horas
