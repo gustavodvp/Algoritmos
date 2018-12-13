@@ -1,0 +1,37 @@
+algoritmo horasMinutosSegundos;
+
+// Aluno: Gustavo Ribeiro dos Santos
+// Matricula: UC18100150
+
+
+// Síntese
+//  Objetivo:  calcular quantos minutos e segundos tem as horas
+//  Entrada : horas
+//  Saída   : minutos e segundos
+
+// valores de entrada
+// 24 horas
+
+// valores de saida
+// 1440 minutos 
+// 86400 segundos
+
+
+principal
+	// Declarações
+	inteiro horas, minutos, segundos;
+	
+
+	// Instruções
+	escreval("Digite as horas: ");
+	leia(horas);
+	limpaTela();
+	escreval("As horas são: ", horas);
+	minutos=horas*60;
+	escreval("Os minutos são: ", minutos);
+	segundos=horas*3600;
+	escreval("Os segundos são: ", segundos);
+
+	
+
+fimPrincipal

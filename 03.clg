@@ -1,0 +1,50 @@
+algoritmo semNome;
+// Síntese
+//  Objetivo:
+//  Entrada :
+//  Saída   :
+
+
+principal
+	// Declarações
+	inteiro ddd;
+
+
+	// Instruções
+	escreval("Digite o DDD para saber a qual cidade pertence: ");
+	leia(ddd);
+	escolha(ddd)
+	caso 61
+		escreval("BRASÍLIA");
+		interrompa;
+	caso 71
+		escreval("SALVADOR");
+		interrompa;
+	caso 11
+		escreval("SÃO PAULO");
+		interrompa;
+	caso 21
+		escreval("RIO DE JANEIRO");
+		interrompa;
+	caso 32
+		escreval("JUIZ DE FORA");
+		interrompa;
+	caso 19
+		escreval("CAMPINAS");
+		interrompa;
+	caso 27
+		escreval("VITÓRIA");
+		interrompa;
+	caso 31
+		escreval("BELO HORIZONTE");
+		interrompa;
+
+	outroCaso
+		escreval("Uma cidade no Brasil sem identificação...");
+	fimEscolha
+
+
+
+
+
+fimPrincipal

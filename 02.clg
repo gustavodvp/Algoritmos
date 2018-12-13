@@ -1,0 +1,88 @@
+algoritmo pesquisaEntrePilotos;
+// Síntese
+// Aluno: Gustavo Ribeiro dos Santos // Matricula UC18100150
+//  Objetivo:  Pesquisa entre pilotos para saber qual equipe da Formula 1 é favorita;
+//  Entrada : quantidade de pessoas entrevistadas, qual sua equipe favorita;
+//  Saída   : quantidade de indicações cada equipe recebeu, informar se houver uma opinião diferente das equipes indicadas, qual equipe foi mais privilegiada;
+
+// Valores de Entrada
+// 11 pessoas entrevistadas
+// Equipes favoritas: F, W, W, W, F, R, W, W, F, R;
+// 1 entrevistado teve opinião diferente, votou na McLaren
+
+// Valores de Saida
+// Ferrari recebeu 3 indicações;
+// Williams recebeu 5 indicações;
+// Red Bull recebeu 2 indicações;
+// McLaren recebeu 1 indicação (opinião diferente);
+
+principal
+	// Declarações
+
+	inteiro contador;
+	inteiro qtdePessoasEntrevistadas, equipeFavorita, ferrari, williams, redbull, outraEquipe;
+	caracter escolhaEquipe;
+
+	// Instruções
+
+	outraEquipe=0;
+	ferrari=0;
+	williams=0;
+	redbull=0;
+
+
+	escreval("Pesquisa entre pilotos da Formula 1 para saber qual é a equipe favorita!");
+	escreval("Quantas pessoas serão entrevistadas?");
+	leia(qtdePessoasEntrevistadas);
+	enquanto(qtdePessoasEntrevistadas<5) faca
+		escreval("Quantidade inválida! Somente acima de 5 pessoas.");
+		leia(qtdePessoasEntrevistadas);
+	fimEnquanto
+
+	para(contador de 1 ate qtdePessoasEntrevistadas passo 1) faca
+
+		
+
+		escreval("Nos informe sua equipe favorita da Formula 1:");
+		escreval("F - FERRARI / R - RED BULL / W - WILLIAMS");
+		leiaCaracter(escolhaEquipe);
+		escolhaEquipe=maiusculoCaracter(escolhaEquipe)
+		;
+		escolha(escolhaEquipe)
+
+		caso 'F'
+			escreval("FERRARI");
+			ferrari=ferrari+1;
+			interrompa;
+
+		caso 'R'
+			escreval("RED BULL");
+			redbull=redbull+1;
+			interrompa;
+
+		caso 'W'
+			escreval("WILLIAMS");
+			williams=williams+1;
+			interrompa;
+		outroCaso
+			outraEquipe=outraEquipe+1;
+			interrompa;
+
+		fimEscolha
+	fimPara
+
+	limpaTela();
+
+
+	escreva("Houveram um total de ", qtdePessoasEntrevistadas);
+	escreval(" pessoas entrevistadas");
+	escreval("Quantidade de votos da Ferrari: ", ferrari);
+	escreval("Quantidade de votos da Williams: ", williams);
+	escreval("Quantidade de votos da Red Bull: ", redbull);
+	se(outraEquipe>ferrari+williams+redbull) entao
+		escreval("Outra equipe privilegiada!");
+	fimSe
+
+
+
+	fimPrincipal
