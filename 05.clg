@@ -1,0 +1,126 @@
+// Nome: Gustavo Ribeiro dos Santos // Matricula: UC18100150 // QUESTAO 02
+algoritmo semNome;
+// Síntese
+//  Objetivo:  levantamento sobre a situacao de obras que estao em andamento
+//  Entrada : nome da obra, mes e ano de inicio da obra;
+//  Saída   : nome da obra, situacao por extenso, mês por extenso, ano de inicio da obra, e se ele é bissexto ou nao;
+
+
+principal
+	// Declarações
+	texto nomeObra, situacaoObra, mesPorExtenso;
+	inteiro codigoObra, mesDaObra, anoDaObra;
+
+	// Instruções
+
+	escreval("Levantamento de informacoes sobre as obras pela Secretaria de Obras do DF.");
+
+	faca
+		escreval("Digite o nome da obra a ser analisada: ");
+		leia(nomeObra);
+	enquanto(tamanhoTexto(nomeObra)==0);
+
+	faca
+	escreval("Digite o codigo da Obra para verificar sua situação:");
+	leia(codigoObra);
+	enquanto(codigoObra<1 ou codigoObra>6);
+
+	escolha(codigoObra)
+	caso 1
+		situacaoObra="Obra Concluida.";
+		interrompa;
+
+	caso 2
+		situacaoObra="Problemas no projeto.";
+		interrompa;
+
+	caso 3
+		situacaoObra="Atraso nos repasses financeiros.";
+		interrompa;
+
+	caso 4
+		situacaoObra="Greve dos trabalhadores.";
+		interrompa;
+
+	caso 5
+		situacaoObra="Falta de materiais.";
+		interrompa;
+
+	caso 6
+		situacaoObra="Falta de equipamentos.";
+		interrompa;
+
+	outroCaso
+		escreval("Não encontrado");
+		interrompa;
+
+	fimEscolha
+
+	faca
+		escreval("Digite o mês do inicio da obra:");
+		leia(mesDaObra);
+	enquanto(mesDaObra<1 ou mesDaObra>12);
+
+	escolha(mesDaObra)
+	caso 1
+		mesPorExtenso="Janeiro";
+		interrompa;
+	caso 2
+		mesPorExtenso="Fevereiro";
+		interrompa;
+	caso 3
+		mesPorExtenso="Março";
+		interrompa;
+	caso 4
+		mesPorExtenso="Abril";
+		interrompa;
+	caso 5
+		mesPorExtenso="Maio";
+		interrompa;
+	caso 6
+		mesPorExtenso="Junho";
+		interrompa;
+	caso 7
+		mesPorExtenso="Julho";
+		interrompa;
+	caso 8
+		mesPorExtenso="Agosto";
+		interrompa;
+	caso 9
+		mesPorExtenso="Setembro";
+		interrompa;
+	caso 10
+		mesPorExtenso="Outubro";
+		interrompa;
+	caso 11
+		mesPorExtenso="Novembro";
+		interrompa;
+	caso 12
+		mesPorExtenso="Dezembro";
+		interrompa;
+	outroCaso
+		escreval("Invalido...");
+		interrompa;
+
+	fimEscolha
+
+	escreval("Digite o ano da obra");
+	leia(anoDaObra);
+	enquanto(anoDaObra<2010 e anoDaObra>2019) faca
+		escreval("Ano invalido. Somente permitido maior que 2010 e menor que 2019.");
+		escreval("Digite novamente...");
+		leia(anoDaObra);
+	fimEnquanto
+
+	limpaTela();
+
+	escreval("Nome da obra analisada: ", nomeObra);
+	escreval("Sua situacao: ", situacaoObra);
+	escreval("Mês de inicio da Obra: ", mesPorExtenso);
+	se(anoDaObra/4==0 ou anoDaObra/400) entao
+		escreval("Ano bissexto!");
+	senao
+		escreval("Ano nao é bissexto.");
+	fimSe
+
+fimPrincipal

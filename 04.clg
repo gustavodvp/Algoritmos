@@ -1,0 +1,91 @@
+// Nome: Gustavo Ribeiro dos Santos // Matricula: UC18100150 // Questao 01
+
+algoritmo semNome;
+// Síntese
+//  Objetivo:  escolher o time com maior popularidade no DF.
+//  Entrada : nome do entrevistador, quantidade de pessoas entrevistadas, e o voto de cada uma;
+//  Saída   : nome do entrevistador, quantidade de votos de cada time, qual time vencedor, ou em caso de empate, informar que não houve preferencia;
+
+
+principal
+	// Declarações
+
+	texto nomeEntrevistador;
+	inteiro controle, qtdePessoasEntrevistadas;
+	inteiro timeBrasiliense, timeGama, timeCeilandia;
+	caracter voto;
+
+
+	// Instruções
+
+	timeBrasiliense=0;
+	timeGama=0;
+	timeCeilandia=0;
+
+	faca
+		escreval("Digite o nome do entrevistador/responsável por essa pesquisa: ");
+		leia(nomeEntrevistador);
+	enquanto(tamanhoTexto(nomeEntrevistador)==0);
+
+	faca
+		escreval("Quantas pessoas foram entrevistadas? ");
+		leia(qtdePessoasEntrevistadas);
+	enquanto(qtdePessoasEntrevistadas<10);
+
+	para(controle de 1 ate qtdePessoasEntrevistadas passo 1) faca
+		escreval("Escolha seu voto: ");
+
+		escreval("B - BRASILIENSE / G - GAMA / C - CEILANDIA");
+		leiaCaracter(voto);
+		voto=maiusculoCaracter(voto);
+
+		enquanto(voto!='B' e voto!='G' e voto!='C') faca
+			escreval("Voto invalido, digite novamente....");
+			leiaCaracter(voto);
+			voto=maiusculoCaracter(voto);
+		fimEnquanto
+
+		escolha(voto)
+
+		caso 'B'
+			timeBrasiliense=timeBrasiliense+1;
+			interrompa;
+
+		caso 'C'
+			timeCeilandia=timeCeilandia+1;
+			interrompa;
+
+		caso 'G'
+			timeGama=timeGama+1;
+			interrompa;
+
+		outroCaso
+			escreval("Opcao invalida, tente novamente...");
+
+
+		fimEscolha
+
+	fimPara
+
+	limpaTela();
+
+	escreval("Nome do responsável pela pesquisa: ", nomeEntrevistador);
+	escreval("Quantidade de votos do time Ceilandia: ", timeCeilandia);
+	escreval("Quantidade de votos do time Gama: ", timeGama);
+	escreval("Quantidade de votos do time Brasiliense: ", timeBrasiliense);
+	se(timeCeilandia>timeGama e timeCeilandia>timeBrasiliense) entao
+		escreval("Time Ceilandia VENCEDOR!!");
+	senao
+		se(timeGama>timeCeilandia e timeGama>timeBrasiliense) entao
+			escreval("Time Gama VENCEDOR!!");
+		senao
+			se(timeBrasiliense>timeCeilandia e timeBrasiliense>timeGama) entao
+				escreval("Time Brasiliense VENCEDOR!!!");
+			senao
+				escreval("Houve empate. Nenhum time de preferencia...");
+			fimSe
+		fimSe
+	fimSe
+
+
+fimPrincipal

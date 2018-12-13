@@ -1,0 +1,226 @@
+algoritmo semNome;
+
+// Nome: Gustavo Ribeiro dos Santos // Matricula: UC18100150	
+
+// Síntese
+//  Objetivo:  fazer um levantamento para descobrir o perfil das pessoas que frequentam determinado cinema
+//  Entrada : numero de sessões, nome do filme, qtde de pessoas que assistiram ao filme, sexo das pessoas, idade;
+//  Saída   : para o filme: nome, qtde pessoas sexo feminino e qtde pessoas masculino que assistiram e a classificação de acordo com a idade
+// para todos os filmes: qtde de pessoas maiores de idade do sexo masculino e qtde de pessoas do sexo feminino que estavam presentes em todas as sessoes,
+// e se a quantidade de pessoas do sexo Feminino sao maiores, iguais ou menores que as do sexo masculino 
+
+
+principal
+	// Declarações
+
+	inteiro controle, controle2;
+	inteiro numeroSessoes, qtdePessoasAssistiramFilme, idadePessoa, qtdePessoasSexoM, qtdePessoasSexoF;
+	inteiro qtdePessoasMaioresIdadeSexoM, qtdePessoasMaioresIdadeSexoF;
+	caracter sexo, teclaContinuar;
+	texto nomeFilme;
+
+	// Instruções
+
+	qtdePessoasSexoM=0;
+	qtdePessoasSexoF=0;
+	qtdePessoasMaioresIdadeSexoM=0;
+	qtdePessoasMaioresIdadeSexoF=0;
+
+	numeroSessoes=validaNumeroDeSessoes(numeroSessoes);
+
+	// do filme:
+	para(controle de 1 ate numeroSessoes passo 1) faca	
+
+		nomeFilme=leValidaTituloFilme(nomeFilme);
+
+		qtdePessoasAssistiramFilme=validaQtdePessoas(qtdePessoasAssistiramFilme, nomeFilme);
+
+
+
+
+		// das pessoas:
+		para(controle2 de 1 ate qtdePessoasAssistiramFilme passo 1) faca
+			sexo=leValidaSexo(sexo, qtdePessoasSexoF, qtdePessoasSexoM);
+
+			idadePessoa=leValidaIdade(idadePessoa);
+
+
+			se(sexo=='f') entao
+				qtdePessoasSexoF=qtdePessoasSexoF+1;
+			senao
+				se(sexo=='m') entao
+					qtdePessoasSexoM=qtdePessoasSexoM+1;
+				fimSe
+			fimSe
+			se(sexo=='m' e idadePessoa>18) entao
+				qtdePessoasMaioresIdadeSexoM=qtdePessoasMaioresIdadeSexoM+1;
+			senao
+				se(sexo=='f' e idadePessoa>18) entao
+					qtdePessoasMaioresIdadeSexoF=qtdePessoasMaioresIdadeSexoF+1;
+				fimSe
+			fimSe
+
+
+		fimPara
+		exibeQuantidadeClassificacao (qtdePessoasAssistiramFilme, idadePessoa);
+
+
+		exibeQuantidadeSexo(nomeFilme, qtdePessoasSexoF, qtdePessoasSexoM);
+
+
+		teclaContinuar=lerTecla(teclaContinuar);
+		limpaTela();
+
+	fimPara
+
+	// todos os filmes e pessoas
+
+	apresentaQuantidadeIdadeSexo(qtdePessoasMaioresIdadeSexoF, qtdePessoasMaioresIdadeSexoF);
+
+
+
+
+
+fimPrincipal
+
+//--------------
+// Validando numero de sessoes
+//--------------
+
+funcao inteiro validaNumeroDeSessoes(inteiro numeroSessoes)
+
+	escreval("Quantas sessões o cinema disponibiliza?");
+	leia(numeroSessoes);
+
+	enquanto(numeroSessoes<3) faca
+		escreval("Quantidade inválida! Somente permitido acima de 03. Tente novamente...");
+		leia(numeroSessoes);
+	fimEnquanto
+
+	retorna numeroSessoes;
+fimFuncao
+
+//-------------
+// validando nome do filme
+//------------
+
+funcao texto leValidaTituloFilme(texto nomeFilme)
+	faca
+		escreval("Qual o nome do filme que irá assistir?");
+		leia(nomeFilme);
+	enquanto(tamanhoTexto(nomeFilme)==0);
+	retorna nomeFilme;
+fimFuncao
+
+//------------
+// validando quantidade de pessoas que assistiram determinado filme
+//-----------
+
+funcao inteiro validaQtdePessoas(inteiro qtdePessoasAssistiramFilme, texto nomeFilme)
+	escreval("Quantas pessoas assistiram ao filme ", nomeFilme, " ?");
+	leia(qtdePessoasAssistiramFilme);
+	enquanto(qtdePessoasAssistiramFilme<10) faca
+		escreval("Número inválido. Somente permitido acima de 10. Tente novamente...");
+		leia(qtdePessoasAssistiramFilme);
+	fimEnquanto
+	retorna qtdePessoasAssistiramFilme;
+fimFuncao
+
+//-----------
+// validando sexo
+//----------
+
+funcao caracter leValidaSexo(caracter sexo, inteiro qtdePessoasSexoF, inteiro qtdePessoasSexoM)
+	faca
+		escreval("Qual o sexo dessa pessoa?");
+		leiaCaracter(sexo);
+		sexo=minusculoCaracter(sexo);
+	enquanto(sexo!='m' e sexo!='f');
+
+
+	retorna sexo;
+fimFuncao
+
+//----------
+// validando idade
+//----------
+
+funcao inteiro leValidaIdade(inteiro idadePessoa)
+	escreval("Qual sua idade?");
+	leia(idadePessoa);
+	enquanto(idadePessoa<3 ou idadePessoa>100) faca
+		escreval("Inválido! Somente permitido acima de 03 anos e menor que 100 anos. Tente novamente.");
+		leia(idadePessoa);
+	fimEnquanto
+	retorna idadePessoa;
+fimFuncao
+
+//------------
+// mostrando resultados DO FILME
+//----------
+
+procedimento exibeQuantidadeSexo(texto nomeFilme, inteiro qtdePessoasSexoF, inteiro qtdePessoasSexoM)
+	escreval("Nome do filme: ", nomeFilme);
+	escreval("Quantidade de pessoas do sexo FEMININO que assistiram ao filme: ", qtdePessoasSexoF);
+	escreval("Quantidade de pessoas do sexo MASCULINO que assistiram ao filme: ", qtdePessoasSexoM);
+fimProcedimento
+
+//-----------
+// mostrando resultado DAS PESSOAS
+//----------
+
+procedimento exibeQuantidadeClassificacao (inteiro qtdePessoasAssistiramFilme, inteiro idadePessoa)
+	escreval("Quantidade de pessoas: ", qtdePessoasAssistiramFilme);
+	escreval("CLASSIFICAÇÃO:");
+	se(idadePessoa>=3 e idadePessoa<=13) entao
+		escreval("CRIANÇA.");
+	senao
+		se(idadePessoa>=14 e idadePessoa<=17) entao
+			escreval("ADOLESCENTE.");
+		senao
+			se(idadePessoa>=18 e idadePessoa<=64) entao
+				escreval("ADULTO.");
+			senao
+				se(idadePessoa>=65 e idadePessoa<=100) entao
+					escreval("IDOSO.");
+				fimSe
+			fimSe
+		fimSe
+	fimSe
+
+fimProcedimento
+
+//---------------
+// mostrando resultado de todos os filmes
+//-----------------
+
+procedimento apresentaQuantidadeIdadeSexo(inteiro qtdePessoasMaioresIdadeSexoF, inteiro qtdePessoasMaioresIdadeSexoM)
+
+	escreval("Quantidade de pessoas do sexo Feminino maiores de idade: ", qtdePessoasMaioresIdadeSexoF);
+	escreval("Quantidade de pessoas do sexo Masculino maiores de idade: ", qtdePessoasMaioresIdadeSexoM);
+	se(qtdePessoasMaioresIdadeSexoF>qtdePessoasMaioresIdadeSexoM) entao
+		escreval("E a quantidade de pessoas do sexo Feminino é maior que as do sexo Masculino.");
+	senao
+		se(qtdePessoasMaioresIdadeSexoF<qtdePessoasMaioresIdadeSexoM) entao
+			escreval("E a quantidade de pessoas do sexo Feminino é menor que as do sexo Mascunlino");
+		senao
+			se(qtdePessoasMaioresIdadeSexoF==qtdePessoasMaioresIdadeSexoM) entao
+				escreval("A quantidade de pessoas do sexo Feminino é IGUAL as do sexo Masculino.");
+			fimSe
+		fimSe
+	fimSe
+fimProcedimento
+
+//--------
+// validando tecla
+//----
+
+funcao caracter lerTecla(caracter teclaContinuar)
+	escreval("Pressione qualquer tecla para continuar:");
+	leiaCaracter(teclaContinuar);
+	retorna teclaContinuar;
+fimFuncao
+
+
+
+
